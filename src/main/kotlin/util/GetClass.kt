@@ -4,7 +4,7 @@ import `fun`.eternalblue.data.ConstDate
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-class GetClass
+object GetClass
 {
     fun getClass(user_id:String, access_secret:String, access_id:String, last_sec_update_ts_s:String)
     {

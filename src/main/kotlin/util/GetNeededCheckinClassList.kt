@@ -5,7 +5,7 @@ import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-class GetNeededCheckinClassList
+object GetNeededCheckinClassList
 {
     fun getCheckList(access_secret:String,user_id:String,last_sec_update_ts_s:String,access_id:String) {
         val url = ConstDate().needCheckinListUrl
