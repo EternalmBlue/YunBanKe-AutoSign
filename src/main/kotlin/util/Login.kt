@@ -1,7 +1,6 @@
 package `fun`.eternalblue.util
 
 import com.microsoft.playwright.BrowserType
-import com.microsoft.playwright.Page
 import com.microsoft.playwright.Playwright
 import com.microsoft.playwright.options.LoadState
 import okhttp3.FormBody
@@ -18,12 +17,12 @@ object Login
     * 姓名，手机号
     * 等基础信息
     */
-    fun login(userName : String,password: String)
+    fun login(userName : String,password: String): String?
     {
         val url : String = "https://www.mosoteach.cn/web/index.php?c=passport&m=account_login"
         val formBody = FormBody.Builder()
-            .addEncoded("account_name","13277697010")
-            .addEncoded("user_pwd","Eternal_myx2004")
+            .addEncoded("account_name",userName)
+            .addEncoded("user_pwd",password)
             .addEncoded("remember_me","N")
             .build()
 
@@ -39,16 +38,20 @@ object Login
             val response = client.newCall(loginRequest).execute()
             if (response.isSuccessful)
             {
-                println(response.body!!.string())
+                val rsp = response.body!!.string()
+                println(rsp)
+                return rsp
             }else if (!response.isSuccessful)
             {
                 println("错误响应:")
                 println(response.body!!.string())
+                return response.body!!.string()
             }
         } catch (e: IOException)
         {
             println(e.message)
         }
+        return null
     }
 
     /*
@@ -56,7 +59,7 @@ object Login
     * 获取localstorage中存储的
     * proxyToken
     * */
-    fun simulatedLogin(): String? {
+    fun getToken(): String? {
         try
         {
             val playwright = Playwright.create()
