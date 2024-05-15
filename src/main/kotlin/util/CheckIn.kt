@@ -44,14 +44,14 @@ object CheckIn
     }
 }
 
-fun main()
-{
-    println("请输入云班课账户名(手机号或邮箱账号)")
-    UserLoginInfo.userName = readln()
-    println("请输入云班课密码")
-    UserLoginInfo.passWord = readln()
-
-    val loginRspJsonStr = Login.login(UserLoginInfo.userName?:return, UserLoginInfo.passWord?:return)
-    val loginStr = DecodeJson.decodeJson(loginRspJsonStr!!, User::class)?:return
-    CheckIn.checkIn(loginStr.user.last_sec_update_ts_s,loginStr.user.access_id,loginStr.user.user_id,loginStr.user.access_secret,"E41E267B-D1F2-11EE-8539-1C34DA7B3F7C")
-}
+//fun main()
+//{
+//    println("请输入云班课账户名(手机号或邮箱账号)")
+//    UserLoginInfo.userName = readln()
+//    println("请输入云班课密码")
+//    UserLoginInfo.passWord = readln()
+//
+//    val loginRspJsonStr = Login.login(UserLoginInfo.userName?:return, UserLoginInfo.passWord?:return)
+//    val loginStr = DecodeJson.decodeJson(loginRspJsonStr!!, User::class)?:return
+//    CheckIn.checkIn(loginStr.user.last_sec_update_ts_s,loginStr.user.access_id,loginStr.user.user_id,loginStr.user.access_secret,"E41E267B-D1F2-11EE-8539-1C34DA7B3F7C")
+//}
