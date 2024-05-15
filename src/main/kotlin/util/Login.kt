@@ -1,8 +1,8 @@
 package `fun`.eternalblue.util
 
-import com.microsoft.playwright.BrowserType
-import com.microsoft.playwright.Playwright
-import com.microsoft.playwright.options.LoadState
+//import com.microsoft.playwright.BrowserType
+//import com.microsoft.playwright.Playwright
+//import com.microsoft.playwright.options.LoadState
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -59,26 +59,28 @@ object Login
     * 获取localstorage中存储的
     * proxyToken
     * */
-    fun getToken(): String? {
-        try
-        {
-            val playwright = Playwright.create()
-            val browser = playwright.chromium().launch(BrowserType.LaunchOptions().setHeadless(true))
-            val page = browser.newPage()
-            page.navigate("https://www.mosoteach.cn/web/index.php?c=passport")
-            page.fill("input[name=account_name]","13277697010")
-            page.fill("input[name=user_password]","Eternal_myx2004")
-            page.click(".button-big")
-            page.waitForLoadState(LoadState.LOAD)
-            page.waitForLoadState(LoadState.NETWORKIDLE)
-            val token = page.evaluate("localStorage.getItem('proxyToken')") as String
-            println(token)
-            browser.close()
-            return token
-        }catch (e:Exception)
-        {
-            println(e.message)
-        }
-        return null
-    }
+//    fun getToken(): String?
+//    {
+//        try
+//        {
+//            val playwright = Playwright.create()
+//            val browser = playwright.chromium().launch(BrowserType.LaunchOptions().setHeadless(true))
+//            val page = browser.newPage()
+//            page.navigate("https://www.mosoteach.cn/web/index.php?c=passport")
+//            page.fill("input[name=account_name]","13277697010")
+//            page.fill("input[name=user_password]","Eternal_myx2004")
+//            page.click(".button-big")
+//            page.waitForLoadState(LoadState.LOAD)
+//            page.waitForLoadState(LoadState.NETWORKIDLE)
+//            val token = page.evaluate("localStorage.getItem('proxyToken')") as String
+//            println(token)
+//            browser.close()
+//            return token
+//        }catch (e:Exception)
+//        {
+//            println(e.message)
+//        }
+//        return null
+//    }
+//  模拟登录用于刷精品课时长，一旦启用会使.jar文件空间大幅增加.请期待后续功能开放.
 }
