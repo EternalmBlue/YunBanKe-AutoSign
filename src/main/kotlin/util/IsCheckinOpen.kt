@@ -33,7 +33,13 @@ object IsCheckinOpen
                     .build()
         val client = OkHttpClient()
 
-        val rsp = client.newCall(getCheckList).execute()
-        //println(rsp.body!!.string())
+        try
+        {
+            val rsp = client.newCall(getCheckList).execute()
+            //println(rsp.body!!.string())
+        } catch (e: Exception)
+        {
+            println(e.message)
+        }
     }
 }
