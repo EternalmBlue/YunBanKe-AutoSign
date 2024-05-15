@@ -19,3 +19,5 @@ cd到autosign.jar文件所在目录，使用java -jar autosign-1.0-SNAPSHOT.jar 
 感谢所有大佬提供的逆向思路和接口，我其实只会萌新逆向，使用的都是大佬逆向的接口。
 我翻看github时发现近2年没有云班课相关的资源更新，且已有的资源使用难度稍大，本作应该会成为这类程序的集大成者。
 
+![Kotlin](https://img.shields.io/badge/Kotlin-00599C?logo=kotlin&logoColor=white)
+简洁，优雅，安全，强大的语言.
