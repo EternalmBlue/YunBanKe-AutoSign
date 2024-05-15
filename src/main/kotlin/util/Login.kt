@@ -3,6 +3,7 @@ package `fun`.eternalblue.util
 //import com.microsoft.playwright.BrowserType
 //import com.microsoft.playwright.Playwright
 //import com.microsoft.playwright.options.LoadState
+import `fun`.eternalblue.data.UserLoginInfo
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -67,8 +68,8 @@ object Login
 //            val browser = playwright.chromium().launch(BrowserType.LaunchOptions().setHeadless(true))
 //            val page = browser.newPage()
 //            page.navigate("https://www.mosoteach.cn/web/index.php?c=passport")
-//            page.fill("input[name=account_name]","13277697010")
-//            page.fill("input[name=user_password]","Eternal_myx2004")
+//            page.fill("input[name=account_name]",UserLoginInfo.userName)
+//            page.fill("input[name=user_password]",UserLoginInfo.passWord)
 //            page.click(".button-big")
 //            page.waitForLoadState(LoadState.LOAD)
 //            page.waitForLoadState(LoadState.NETWORKIDLE)
