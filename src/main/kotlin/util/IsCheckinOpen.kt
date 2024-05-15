@@ -7,11 +7,11 @@ import okhttp3.Request
 
 object IsCheckinOpen
 {
-    fun isCheckOpen(access_secret:String, user_id:String, last_sec_update_ts_s:String, access_id:String)
+    fun isCheckOpen(access_secret:String, user_id:String, last_sec_update_ts_s:String, access_id:String,classId:String)
     {
         val url = ConstDate().isCheckinOpen
         val formBody = FormBody.Builder()
-            .addEncoded("clazz_course_id","37F9113A-D142-11EE-8539-1C34DA7B3F7C")
+            .addEncoded("clazz_course_id",classId)
             .build()
 
         val getCheckList = Request.Builder()
@@ -26,7 +26,7 @@ object IsCheckinOpen
                     .header("Host","api.mosoteach.cn")
                     .header("Content-Type","application/x-www-form-urlencoded")
                     .header("Date", Utils.getTime())
-                    .header("X-mssvc-signature", MakeSign.makeSign(userId = user_id, accessSecret = access_secret, method = 3, classId = "37F9113A-D142-11EE-8539-1C34DA7B3F7C"))
+                    .header("X-mssvc-signature", MakeSign.makeSign(userId = user_id, accessSecret = access_secret, method = 3, classId = classId))
                     .header("X-mssvc-sec-ts",last_sec_update_ts_s)
                     .header("X-mssvc-access-id",access_id)
                     .post(formBody)
@@ -34,6 +34,6 @@ object IsCheckinOpen
         val client = OkHttpClient()
 
         val rsp = client.newCall(getCheckList).execute()
-        println(rsp.body!!.string())
+        //println(rsp.body!!.string())
     }
 }

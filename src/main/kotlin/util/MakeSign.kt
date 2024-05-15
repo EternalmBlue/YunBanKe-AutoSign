@@ -6,7 +6,7 @@ import javax.crypto.spec.SecretKeySpec
 
 object MakeSign
 {
-    // method: 1获取课程列表，2获取签到历史记录，3获取当前课程签到状态
+    // method: 1获取课程列表，2获取签到历史记录，3获取当前课程签到状态，4使用API签到
     fun makeSign(userId:String, accessSecret:String, method:Int, classId:String? = null): String
     {
         val time = Utils.getTime()
@@ -31,6 +31,12 @@ object MakeSign
                 val message = "${url}|${userId.uppercase()}|${time}|${str}"
                 return buildSign(accessSecret = accessSecret, message = message)
             }
+            4 ->{
+                val url: String = ConstDate().checkInUrl
+                val str = Utils.getMD5("cc_id=${classId}").uppercase()
+                val message = "${url}|${userId.uppercase()}|${time}|${str}"
+                return buildSign(accessSecret = accessSecret, message = message)
+            }
 
             else -> {
                 val message = "签名构建失败"
@@ -41,7 +47,7 @@ object MakeSign
 
         private fun buildSign(message:String, accessSecret:String): String
         {
-            //println(message)
+            println(message)
             val str = message.toByteArray(Charsets.UTF_8)
             //val key = ConstDate().key.toByteArray(Charsets.UTF_8)
             val key = accessSecret.toByteArray(Charsets.UTF_8)

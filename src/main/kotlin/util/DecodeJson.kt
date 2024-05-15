@@ -11,7 +11,8 @@ import kotlin.reflect.KClass
 object DecodeJson
 {
     @OptIn(InternalSerializationApi::class)
-    fun <T:Any> decodeJson(jsonString: String, entity: KClass<T>): T? {
+    fun <T:Any> decodeJson(jsonString: String, entity: KClass<T>): T?
+    {
         val json = Json{
             ignoreUnknownKeys = true
         }

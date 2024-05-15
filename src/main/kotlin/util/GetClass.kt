@@ -6,8 +6,7 @@ import okhttp3.Request
 
 object GetClass
 {
-    fun getClass(user_id:String, access_secret:String, access_id:String, last_sec_update_ts_s:String)
-    {
+    fun getClass(user_id:String, access_secret:String, access_id:String, last_sec_update_ts_s:String): String? {
         val url = ConstDate().coursesListUrl
         val getClassInfo = Request.Builder()
             .url(url)
@@ -29,11 +28,11 @@ object GetClass
         try
         {
            val rsp = client.newCall(getClassInfo).execute()
-            println(rsp.body?.string())
+            return(rsp.body?.string())
         }catch (e:Exception)
         {
             println(e.message)
         }
-
+        return null
     }
 }

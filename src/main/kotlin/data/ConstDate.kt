@@ -8,5 +8,7 @@ data class ConstDate(
     //展示该课程的历史签到记录签到的课程
     val needCheckinListUrl: String = "https://api.mosoteach.cn/mssvc/index.php/checkin/index",
     //获取当前class_id对应的课程的签到状态（签到类型和是否开启签到）
-    val isCheckinOpen:String = "https://api.mosoteach.cn/mssvc/index.php/checkin/current_open"
+    val isCheckinOpen:String = "https://api.mosoteach.cn/mssvc/index.php/checkin/current_open",
+    //对class_id对应的课程进行签到
+    val checkInUrl :String = "https://api.mosoteach.cn/mssvc/index.php/cc_clockin/clockin"
 )
