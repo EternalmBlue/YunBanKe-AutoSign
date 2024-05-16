@@ -38,9 +38,21 @@ object CheckIn
             .post(formBody)
             .build()
         val client = OkHttpClient()
-
         val rsp = client.newCall(getCheckList).execute()
-        println(rsp.body!!.string())
+        try
+        {
+            val mes = rsp.body!!.string()
+            println(mes)
+            Loggin.logger.info(mes)
+        }catch (e:Exception)
+        {
+            println(e.message)
+            Loggin.logger.error(e.message)
+        }
+        finally
+        {
+            rsp.body?.close()
+        }
     }
 }
 

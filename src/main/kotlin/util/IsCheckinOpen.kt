@@ -32,14 +32,19 @@ object IsCheckinOpen
                     .post(formBody)
                     .build()
         val client = OkHttpClient()
+        val rsp = client.newCall(getCheckList).execute()
 
         try
         {
-            val rsp = client.newCall(getCheckList).execute()
-            //println(rsp.body!!.string())
+            val mes = rsp.body?.string()
+            Loggin.logger.info(mes)
         } catch (e: Exception)
         {
             println(e.message)
+            Loggin.logger.error(e.message)
+        }finally
+        {
+            rsp.body?.close()
         }
     }
 }
