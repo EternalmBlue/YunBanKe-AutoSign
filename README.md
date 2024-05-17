@@ -17,7 +17,7 @@ cd到autosign.jar文件所在目录，使用java -jar autosign-1.0-SNAPSHOT.jar 
 如有问题请提issue
 
 # 鸣谢
-感谢所有大佬提供的逆向思路和接口，我其实只会萌新逆向，使用的都是大佬逆向的接口。
+感谢所有大佬提供的逆向思路和接口，我其实只会萌新逆向，使用的都是大佬们逆向的接口。
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-00599C?logo=kotlin&logoColor=white)
 简洁，优雅，安全，强大的语言.
