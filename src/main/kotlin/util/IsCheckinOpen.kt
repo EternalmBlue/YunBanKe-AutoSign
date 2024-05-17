@@ -37,11 +37,11 @@ object IsCheckinOpen
         try
         {
             val mes = rsp.body?.string()
-            Loggin.logger.info(mes)
+            mes?.let { Log.info(it) }
         } catch (e: Exception)
         {
             println(e.message)
-            Loggin.logger.error(e.message)
+            e.message?.let { Log.error(it) }
         }finally
         {
             rsp.body?.close()

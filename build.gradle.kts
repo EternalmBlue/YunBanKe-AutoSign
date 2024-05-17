@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "fun.eternalblue"
-version = "1.0-SNAPSHOT"
+version = "1.2"
 
 repositories {
     mavenCentral()
@@ -18,8 +18,6 @@ dependencies {
     //implementation("com.microsoft.playwright:playwright:1.43.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-    implementation("org.apache.logging.log4j:log4j-core:2.17.1")
-    implementation("org.apache.logging.log4j:log4j-api:2.14.1")
 }
 
 tasks.test {

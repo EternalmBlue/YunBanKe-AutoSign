@@ -1,8 +1,6 @@
 package `fun`.eternalblue.util
 
 import `fun`.eternalblue.data.ConstDate
-import `fun`.eternalblue.data.User
-import `fun`.eternalblue.data.UserLoginInfo
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -43,11 +41,11 @@ object CheckIn
         {
             val mes = rsp.body!!.string()
             println(mes)
-            Loggin.logger.info(mes)
+            Log.info(mes)
         }catch (e:Exception)
         {
             println(e.message)
-            Loggin.logger.error(e.message)
+            e.message?.let { Log.error(it) }
         }
         finally
         {
