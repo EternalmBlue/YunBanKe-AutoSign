@@ -4,6 +4,9 @@ import `fun`.eternalblue.data.ConstDate
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import java.io.IOException
+import java.net.SocketException
+import java.net.SocketTimeoutException
 
 object IsCheckinOpen
 {
@@ -32,19 +35,31 @@ object IsCheckinOpen
                     .post(formBody)
                     .build()
         val client = OkHttpClient()
-        val rsp = client.newCall(getCheckList).execute()
-
         try
         {
-            val mes = rsp.body?.string()
-            mes?.let { Log.info(it) }
-        } catch (e: Exception)
-        {
-            println(e.message)
+            val rsp = client.newCall(getCheckList).execute()
+            try
+            {
+                val mes = rsp.body?.string()
+                mes?.let { Log.info(it) }
+            } catch (e: IOException) {
+                println(e.message)
+                e.message?.let { Log.error(it) }
+            } catch (e: Exception) {
+                println(e.message)
+                e.message?.let { Log.error(it) }
+            } finally {
+                rsp.body?.close()
+            }
+        } catch (e: SocketTimeoutException) {
+            println("Request timed out: ${e.message}")
             e.message?.let { Log.error(it) }
-        }finally
-        {
-            rsp.body?.close()
+        } catch (e: IOException) {
+            println("Network error: ${e.message}")
+            e.message?.let { Log.error(it) }
+        } catch (e: Exception) {
+            println("An error occurred: ${e.message}")
+            e.message?.let { Log.error(it) }
         }
     }
 }

@@ -4,6 +4,8 @@ import `fun`.eternalblue.data.ConstDate
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okio.IOException
+import java.net.SocketTimeoutException
 
 object CheckIn
 {
@@ -36,20 +38,31 @@ object CheckIn
             .post(formBody)
             .build()
         val client = OkHttpClient()
-        val rsp = client.newCall(getCheckList).execute()
         try
         {
-            val mes = rsp.body!!.string()
-            println(mes)
-            Log.info(mes)
-        }catch (e:Exception)
+            val rsp = client.newCall(getCheckList).execute()
+            try
+            {
+                val mes = rsp.body!!.string()
+                println(mes)
+                Log.info(mes)
+            }catch (e:Exception)
+            {
+                println(e.message)
+                e.message?.let { Log.error(it) }
+            }
+            finally
+            {
+                rsp.body?.close()
+            }
+        } catch (e: SocketTimeoutException)
         {
             println(e.message)
             e.message?.let { Log.error(it) }
-        }
-        finally
+        } catch (e:IOException)
         {
-            rsp.body?.close()
+            println(e.message)
+            e.message?.let { Log.error(it) }
         }
     }
 }
