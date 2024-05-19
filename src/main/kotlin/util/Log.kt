@@ -7,7 +7,7 @@ import java.time.LocalTime
 
 object Log
 {
-    val logFile = File("logs/log.log")
+    private val logFile = File("logs/log.log")
     init
     {
         if(logFile.exists())
