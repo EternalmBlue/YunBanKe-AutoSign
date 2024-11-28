@@ -13,8 +13,10 @@
 # 使用方法
 先修改![img_1.png](img_1.png)
 不修改也可在程序运行时填入
+
 然后
-cd到autosign.jar文件所在目录，使用java -jar autosign-1.3.jar  启动程序，输入云班课账号密码，即可开始自动签到
+
+cd到autosign.jar文件所在目录，使用java -jar autosign-1.3.jar  启动程序，即可开始自动签到
 
 # Tip
 程序使用java8构建，运行环境为java8以上
