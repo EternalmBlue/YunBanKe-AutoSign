@@ -9,12 +9,12 @@
 - [ ] 通过AI自动完成老师发布的云班课作业（长时间后更新)
 
 # 待解决问题
-目前只能自动签CheckIn_flag为Y的课程，为N的课程会提示签到已结束。我会在近期亲自重新逆向软件。
+目前只能自动签CheckIn_flag为Y的课程，为N的课程会提示签到已结束。需要等待其他大佬进一步逆向。
 # 使用方法
-cd到autosign.jar文件所在目录，使用java -jar autosign-1.0-SNAPSHOT.jar  启动程序，输入云班课账号密码，即可开始自动签到
+cd到autosign.jar文件所在目录，使用java -jar autosign-1.3.jar  启动程序，输入云班课账号密码，即可开始自动签到
 
 # Tip
-程序使用java17构建，运行环境也为java17，java17以下版本还未测试。
+程序使用java8构建，运行环境为java8以上
 
 如有问题请提issue
 

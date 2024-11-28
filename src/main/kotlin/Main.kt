@@ -11,6 +11,7 @@ import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking ()
 {
+    //修改main/data/UserLoginInfo.kt中的username和password
     if (UserLoginInfo.userName == null || UserLoginInfo.passWord == null)
     {
         println("请输入云班课账户名(手机号或邮箱账号)")
