@@ -11,8 +11,9 @@ import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking ()
 {
-    //修改main/data/UserLoginInfo.kt中的username和password
-    if (UserLoginInfo.userName == null || UserLoginInfo.passWord == null)
+    Utils.generateUserInfoFile()
+    Utils.readUserInfoFile()
+    if (UserLoginInfo.userName?.isEmpty() == true || UserLoginInfo.passWord?.isEmpty() == true)
     {
         println("请输入云班课账户名(手机号或邮箱账号)")
         UserLoginInfo.userName = readln()
@@ -21,6 +22,7 @@ fun main() = runBlocking ()
     }
 
     val loginRspJsonStr = Login.login(UserLoginInfo.userName?:return@runBlocking,UserLoginInfo.passWord?:return@runBlocking)
+    println(loginRspJsonStr)
     val loginStr = DecodeJson.decodeJson(loginRspJsonStr!!,User::class)
     val classStr = GetClass.getClass(loginStr!!.user.user_id,loginStr.user.access_secret,loginStr.user.access_id,loginStr.user.last_sec_update_ts_s)
     val classList = DecodeJson.decodeJson(classStr!!,ClassList::class)
