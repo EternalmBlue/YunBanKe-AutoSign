@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.24"
+    kotlin("jvm") version "2.0.20"
     kotlin("plugin.serialization") version "1.9.24"
     id("com.github.johnrengelman.shadow") version "8.1.0"
     application
@@ -24,7 +24,7 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(8)
 }
 
 application{

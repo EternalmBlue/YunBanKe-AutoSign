@@ -11,11 +11,14 @@ import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking ()
 {
-    println("请输入云班课账户名(手机号或邮箱账号)")
-    UserLoginInfo.userName = readln()
-    println("请输入云班课密码")
-    UserLoginInfo.passWord = readln()
-    
+    if (UserLoginInfo.userName == null || UserLoginInfo.passWord == null)
+    {
+        println("请输入云班课账户名(手机号或邮箱账号)")
+        UserLoginInfo.userName = readln()
+        println("请输入云班课密码")
+        UserLoginInfo.passWord = readln()
+    }
+
     val loginRspJsonStr = Login.login(UserLoginInfo.userName?:return@runBlocking,UserLoginInfo.passWord?:return@runBlocking)
     val loginStr = DecodeJson.decodeJson(loginRspJsonStr!!,User::class)
     val classStr = GetClass.getClass(loginStr!!.user.user_id,loginStr.user.access_secret,loginStr.user.access_id,loginStr.user.last_sec_update_ts_s)
